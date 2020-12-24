@@ -25,17 +25,13 @@ Route::match(['get','post'],'/about','IndexController@aboutPage');
 
 Route::match(['get','post'],'/admin','AdminController@login');
 
-// Route::get('/blog-post','BlogController@blogpost');
-// Route::get('/about','BlogController@about');
-// Route::get('/blog-list','BlogController@bloglist');
-
 Route::group(['middleware'=>['auth']],function()
 {
 	Route::match(['get','post'],'/admin/dashboard','AdminController@dashboard');
 
 	// Admin Profile Route
-	Route::match(['get','post'],'/admin/profile','AdminController@profile');
-	Route::match(['get','post'],'/admin/profile/{id}','AdminController@profile');
+	Route::match(['get','post'],'/admin/profile','ProfileController@profile');
+	Route::match(['get','post'],'/admin/profile/{id}','ProfileController@profile');
 	
 	//Blog Route
 	Route::match(['get','post'],'/admin/add-blog','BlogController@addBlog');
